@@ -5,7 +5,7 @@ import { addTask, toggleComplete, removeTasks } from '../actions';
 
 
 
-import "./App.css";
+import "./Todo.scss";
 
 class Todo extends React.Component {
 	state = {
@@ -30,28 +30,30 @@ class Todo extends React.Component {
 		return (
 			<div className="todo-app">
 				<h2>Welcome to your Todo App!</h2>
-				<div className="todo-list">
-					{this.props.todos &&
-						this.props.todos.map(task => (
-							<h3 
-								className={'task ' + (task.completed ? 'completed' : '') }
-								onClick={() => this.toggleComplete(task.id)} 
-								key={task.id}
-							>
-								{task.value}
-							</h3>
-						))}
-				</div>
-				<form onSubmit={this.addTask}>
+				<form onSubmit={this.addTask} className='task-form'>
 					<input
 						type="text"
 						value={this.state.newTask}
 						onChange={this.handleChanges}
-						placeholder="Add a new task"
+						placeholder="Add A Task"
 					/>
-					<input type="submit" value="Add a Task"/>
+					<input type="submit" value="+"/>
 				</form>
-				<button onClick={this.props.removeTasks}>REMOVE</button>
+				<div className="todo-list">
+					{this.props.todos &&
+						this.props.todos.map(task => (
+							<div 
+								className={'task ' + (task.completed ? 'completed' : '') }
+								onClick={() => this.toggleComplete(task.id)} 
+								key={task.id}
+							>
+								<p>{task.value}</p>
+							</div>
+						))}
+				</div>
+				<button className='remove-btn' onClick={this.props.removeTasks}>
+					Remove Tasks
+				</button>
 			</div>
 		);
 	}
