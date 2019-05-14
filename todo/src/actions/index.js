@@ -15,3 +15,11 @@ export const toggleComplete = taskID => {
         payload: taskID
     }
 }
+
+export const REMOVE_TASKS = "REMOVE_TASKS";
+
+export const removeTasks = () => {
+    return {
+        type: REMOVE_TASKS
+    }
+}

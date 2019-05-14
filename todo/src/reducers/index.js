@@ -1,4 +1,4 @@
-import { NEW_TASK, TOGGLE_COMPLETE } from '../actions';
+import { NEW_TASK, TOGGLE_COMPLETE, REMOVE_TASKS } from '../actions';
 
 const initialState = {
     todos: []
@@ -29,6 +29,16 @@ export default (state = initialState, action) => {
                         }
                     }
                     return task;
+                })
+            }
+        case REMOVE_TASKS:
+            return {
+                ...state,
+                todos: state.todos.filter(task => {
+                    if (task.completed === false) {
+                        return true;
+                    }
+                    return false;
                 })
             }
         default: 

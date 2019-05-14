@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { addTask, toggleComplete } from '../actions';
+import { addTask, toggleComplete, removeTasks } from '../actions';
 
 
 
@@ -51,6 +51,7 @@ class Todo extends React.Component {
 					/>
 					<input type="submit" value="Add a Task"/>
 				</form>
+				<button onClick={this.props.removeTasks}>REMOVE</button>
 			</div>
 		);
 	}
@@ -62,4 +63,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { addTask, toggleComplete })(Todo);
+export default connect(mapStateToProps, { addTask, toggleComplete, removeTasks })(Todo);
